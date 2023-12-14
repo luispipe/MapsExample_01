@@ -37,7 +37,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDC48iFt-oKIr6V8OgzD5GkjW10qfQD6f8" />
+            android:value="Aquí deben colocar su API key de las credenciales de google cloud" />
     </application>
 
 </manifest>

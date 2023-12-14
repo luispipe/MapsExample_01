@@ -16,6 +16,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +28,8 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     FusedLocationProviderClient fusedClient;
     private static final int REQUEST_CODE = 101;
     FrameLayout map;
+
+    UiSettings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
+        settings= googleMap.getUiSettings();
+        settings.setZoomControlsEnabled(true);
+        settings.setMapToolbarEnabled(true);
+        settings.setCompassEnabled(true);
         LatLng latLng= new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
         MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("Tú Localización");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
